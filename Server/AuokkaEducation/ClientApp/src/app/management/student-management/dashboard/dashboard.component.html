@@ -1,0 +1,25 @@
+<div class="px-4">
+  <app-management-header [header]="'Dashboard'"></app-management-header>
+  <div class="mb-3">
+    <div class="section">
+      <div class="section-title">Courses In Progress</div>
+    </div>
+    <app-course-board [api]="'../api/enrollments/inprogress'"></app-course-board>
+  </div>
+
+  <div class="mb-3">
+    <div class="section">
+      <div class="section-title">Courses coming soon</div>
+    </div>
+    <app-course-board [api]="'../api/enrollments/future'"></app-course-board>
+  </div>
+
+  <div class="mb-3">
+    <div class="section">
+      <div class="section-title mb-1">Courses Completed</div>
+    </div>
+    <app-course-board [api]="'../api/enrollments/completed'"></app-course-board>
+  </div>
+</div>
+
+

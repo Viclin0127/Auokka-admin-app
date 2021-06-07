@@ -1,0 +1,36 @@
+<div class="pr-2" style="max-width:95%;">
+  <div class="mb-2" style="font-size:16pt;">
+    <i class="fas fa-eye"></i> {{text[lang].title}}
+  </div>
+  <div *ngFor="let c of contributions" class="mb-2 shadow p-2 flex-row just-between bg-white">
+    <div class="flex-column">
+      <div>
+        <b style="font-size:16pt;">{{c.title}}</b>
+      </div>
+      <div class="mt-1 d-flex">
+        <span *ngIf="c.approved == 0" class="text-orange border-orange rounded p-1">{{text[lang].underreview}}</span>
+        <span *ngIf="c.approved == -1" class="text-red border-red rounded p-1">{{text[lang].rejected}}</span>
+      </div>
+      <div class="mt-1 d-flex flex-wrap">
+        <span  class="text-red" style="font-size:11pt;">{{c.rejectionReason}}</span>
+      </div>
+      <div class="mt-1">
+        <span class="text-grey">{{text[lang].submitted}} {{c.createTime | date:'yyyy-MM-dd HH:mm'}}</span>
+      </div>
+    </div>
+    <div class="flex-column just-lg-between">
+      <div class="d-flex just-end">
+        <a class="flex-column pointer" [href]="c.file">
+          <div class="fas fa-file-download fa-2x mx-auto"></div>
+          <div style="font-size:10pt;margin-top:5px;" class="mx-auto">{{text[lang].download}}</div>
+        </a>
+      </div>
+      
+      <div class="flex-row just-end">
+        <div *ngFor="let t of c.tags" class="rounded mx-1 border" style="font-size:10pt;padding:5px;">{{t.name}}</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

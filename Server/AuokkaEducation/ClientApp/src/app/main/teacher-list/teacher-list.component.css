@@ -1,0 +1,36 @@
+.title {
+  font-size: 24pt;
+}
+
+.teacher{
+  display: flex;
+  flex-direction: column;
+  margin: 15px auto 15px auto;
+}
+
+.teacher-title{
+  font-size:11pt;
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 576px) {
+  .teacher {
+    width:100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .teacher {
+    width: 50%;
+    margin: 15px 0 15px 0;
+  }
+}
+
+@media screen and (min-width: 992px) {
+}
+
+@media screen and (min-width: 1199px) {
+  .teacher {
+    width: 25%
+  }
+}

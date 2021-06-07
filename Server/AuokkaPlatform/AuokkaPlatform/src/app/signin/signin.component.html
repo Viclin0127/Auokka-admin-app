@@ -1,0 +1,44 @@
+<div class="section d-flex bg-blue" style="width: 100vw;height:100vh">
+  <div class="fixed text-white" style="right:30px;top:20px">
+    <span [class.language-tab-selected]="lang=='cn'" (click)="setLanguage('cn')" class="language-tab pointer">中文</span> | <span [class.language-tab-selected]="lang=='en'" (click)="setLanguage('en')" class="pointer language-tab">English</span>
+  </div>
+  <div class="bg-white m-auto flex-column signin-frame">
+    <div class="flex-row">
+      <b [class.tab-selected]="mode == 0" class="p-2 tab" style="width:50%;text-align:center" (click)="mode = 0">{{text[lang].viaemail}}</b>
+      <b [class.tab-selected]="mode == 1" class="p-2 tab" style="width:50%;text-align:center" (click)="mode = 1">{{text[lang].viamobile}}</b>
+    </div>
+
+    <div class="flex-column py-3 px-4" [style.display]="mode == 0 ? 'block':'none'">
+      <div class="mb-1" style="font-size: 16pt"><b>{{text[lang].emailtitle}}</b></div>
+      <div class="flex-column py-1">
+        <input [placeholder]="text[lang].emailplaceholder" (keyup)="validator.modify('email',$event.target.value)" />
+      </div>
+      <div class="flex-column py-1">
+        <input [placeholder]="text[lang].passwordplaceholder" type="password" (keyup)="validator.modify('password',$event.target.value)" />
+      </div>
+      <span class="font-sm pointer">{{text[lang].forgotpassword}}</span>
+    </div>
+
+    <div class="flex-column py-3 px-4" [style.display]="mode == 1 ? 'block':'none'">
+      <div class="mb-1" style="font-size: 16pt"><b>{{text[lang].mobiletitle}}</b></div>
+      <div class="flex-column py-1">
+        <input [placeholder]="text[lang].mobileplaceholder" (keyup)="validator.modify('mobile',$event.target.value)" />
+      </div>
+      <div class="flex-row just-between py-1">
+        <input [placeholder]="text[lang].signincodeplaceholder"  (keyup)="validator.modify('signinCode',$event.target.value)"/><button class="btn bg-orange" (click)="getCode(validator.form)">Get Code</button>
+      </div>
+      <span class="hint text-red">{{mobileerrormessage}}</span>
+    </div>
+
+    <div class="flex-column px-4">
+      <button class="btn" (click)="signin(validator.form)">
+        <span *ngIf="processing == 0">{{text[lang].btnsignin}}</span>
+        <span *ngIf="processing == 1">{{text[lang].btnsigninprocessing}}<i class="fas fa-circle-notch fa-spin"></i></span>
+      </button>
+      <div class="hint text-red">{{errormessage}}</div>
+    </div>
+    <div class="flex-column px-4 mt-2">
+      <span class="text-grey font-sm">{{text[lang].noaccount}} <b class="pointer" routerLink="/signup">{{text[lang].signup}}</b>{{text[lang].signupafter}}</span>
+    </div>
+  </div>
+</div>

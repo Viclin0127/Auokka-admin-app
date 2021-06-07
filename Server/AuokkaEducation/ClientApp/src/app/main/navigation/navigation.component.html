@@ -1,0 +1,28 @@
+<div class="d-flex section navigation">
+  <div class="login-bar bg-dark flex-row just-center just-md-end" [class.show]="displayMenu" [class.hide]="!displayMenu">
+    <span *ngIf="!loggedIn"><span class="pointer" routerLink="/login">Log In</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="pointer" routerLink="signup">Sign Up</span></span>
+    <span *ngIf="loggedIn"><span class="pointer" routerLink="/management/student">{{'Welcome, ' + firstname + ' ' + surname}}</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="pointer" (click)="logOut()">Log Out</span></span>
+  </div>
+  <div class="container py-1 mx-auto">
+    <div class="flex-column flex-md-row just-md-between px-xl-0 px-5 ">
+      
+      <div class="mx-auto m-md-0 pointer toggleWrapper" style="outline:0;">
+        <div class="flex-row" style="width:100%">
+          <i class="fas fa-bars fa-2x my-auto pointer toggler" (click)="toggleMenuDisplay()"></i>
+          <img class="logo" src="../../../assets/image/main/AuokkaLogo.png"  routerLink="home"/>
+        </div>
+        
+      </div>
+      <div class="flex-column flex-md-row just-between bold navTabsWrapper mx-auto mx-md-0 alwaysVisible" [class.show]="displayMenu" [class.hide]="!displayMenu">
+        <div routerLink="about" routerLinkActive="text-green">ABOUT US</div>
+        <div routerLink="train" routerLinkActive="text-green">TRAINING COURSES</div>
+        <!--<div routerLink="news" routerLinkActive="text-green">NEWS</div>
+    <div routerLink="resource" routerLinkActive="text-green">RESOURCE</div>
+    <div routerLink="career" routerLinkActive="text-green">CAREER</div>-->
+        <div style="cursor:default">NEWS</div>
+        <div style="cursor:default">RESOURCE</div>
+        <div style="cursor:default">CAREER</div>
+      </div>
+    </div>
+  </div>
+</div>

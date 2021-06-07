@@ -1,0 +1,46 @@
+<div class="flex-column course-item" style="max-height:100%;">
+  <div  class="flex-column flex-md-row just-center" style="max-height:100%;">
+    <div class="d-flex">
+      <img [routerLink]="'/main/course/' + course.id " class="pointer" [src]="imageServer + '/api/files/image/course/' + course.image" />
+    </div>
+    
+    <div class="course-card">
+      <div class="flex-column just-between" style="height:100%;">
+        <div>
+          <div class="flex-column flex-md-row just-between">
+            <span class="font-serif course-title pointer" [routerLink]="'/main/course/' + course.id">{{course.name}}</span>
+            <span class="bold mt-1 mt-md-0" style="font-size: 18pt;">${{course.prices[0] ? course.prices[0].amount.toFixed(2) : '0.00'}}</span>
+          </div>
+          <div class="text-light mt-1">
+            <span>{{course.description}}</span>
+          </div>
+        </div>
+
+        <div class="flex-column flex-md-row just-sm-between mt-2 mt-md-0" style="width:100%">
+          <div class="flex-column flex-sm-row my-auto location">
+            <div class="mr-1">
+              <span><i class="fas fa-map-pin"> </i>&nbsp;
+                <!--<span *ngFor="let loc of schedule.parsedLocation; index as i">{{loc}}{{i < schedule.parsedLocation.length - 1 ? ',' : ''}} </span>-->
+                {{course.location}}
+              </span>
+            </div>
+            <div class="mr-1">
+              <span><i class="far fa-clock"></i> {{course.commence | date : "MMM, yyyy"}}</span>
+            </div>
+            <div>
+              <span><i class="fas fa-signal"></i> {{course.level}}</span>
+            </div>
+          </div>
+          <div class="mt-2 mt-md-0">
+            <button class="btn rounded responsive-btn" [routerLink]="'/main/enrol/' + course.id">REGISTER NOW</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+ 
+  
+
+  
+</div>

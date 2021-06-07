@@ -1,0 +1,69 @@
+<div class="modal-outer" *ngIf="showModal">
+  <div class="modal-inner">
+    <div class="modal-body">
+      <div class="form-section">
+        <div class="form-section-header flex-row just-between">
+          <span>{{editingTeacher.id == null ? 'New Teacher' : 'Edit Teacher'}}</span>
+          <span class="pointer" (click)="showModal = !showModal;teacherProcessingStatus = 0;"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="form-section-body" style="border:0">
+          <app-teacher-form [model]="editingTeacher" (emitter)="teacherSubmit($event)" (cancel)="showModal = !showModal;" [processStatus]="teacherProcessingStatus"></app-teacher-form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section py-3">
+  <div class="container">
+    <div class="flex-row just-between px-3">
+      <div class="section-title bold">Teacher</div>
+      <div><button class="btn rounded" (click)="editTeacher()">Create New Teacher</button></div>
+    </div>
+
+  </div>
+
+</div>
+<div class="section">
+  <div class="container">
+    <table class="px-3 table">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th *ngFor="let c of columns" [class.pointer]="c.sortable"
+              (click)="teachers = (c.sortable ? sort(teachers, c) : teachers)">
+            {{c.label}}
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of teachers;index as i">
+          <td>
+            <span *ngIf="isNew(t.createTime)" class="text-red bold">NEW</span>
+            <span *ngIf="!isNew(t.createTime)">{{i+1}}</span>
+          </td>
+          <td><img [src]="'http://119.9.52.51:9997/api/files/image/team/' + t.image" style="width:100px;height:100px" onerror="http://119.9.52.51:9997/api/files/image/misc/default.jpg" /></td>
+          <td class="bold">{{t.firstname}}</td>
+          <td class="bold">{{t.surname}}</td>
+          <td>{{t.title}}</td>
+          <td><input type="checkbox" [checked]="t.active == 1" (change)="toggleActive(i)" /></td>
+          <td>{{t.createTime | date: 'yyyy-MM-dd'}} </td>
+          <td><span class="text-blue bold pointer" (click)="editTeacher(i)">Details</span></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<div class="section">
+  <div class="container">
+    <div class="d-flex mt-2 mb-5">
+      <button *ngIf="offset < total" class="btn showMore rounded mx-auto" (click)="loadTeacher()">SHOW MORE RESULTS</button>
+      <span *ngIf="offset >= total" class="mx-auto text-light">END OF THE LIST</span>
+    </div>
+  </div>
+
+</div>

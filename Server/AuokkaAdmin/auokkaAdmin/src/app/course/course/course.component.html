@@ -1,0 +1,52 @@
+
+<div class="section py-3">
+  <div class="container">
+    <div class="flex-row just-between px-3">
+      <div class="section-title bold">Course</div>
+      <div><button class="btn rounded" routerLink="add">Create New Course</button></div>
+  </div>
+
+  </div>
+    
+  </div>
+  <div class="section">
+    <div class="container">
+      <table class="px-3 table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th *ngFor="let c of columns" [class.pointer]="c.sortable" (click)="courses = (c.sortable ? sort(courses, c) : courses)">
+              {{c.label}}
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of courses;index as i">
+            <td>
+              <span *ngIf="isNew(c.createTime)" class="text-red bold">NEW</span>
+              <span *ngIf="!isNew(c.createTime)">{{i+1}}</span>
+            </td>
+            <td><img [src]="imageServer + '/api/files/image/course/' + c.image" style="width:100px;height:70px"/></td>
+            <td>{{c.name}}</td>
+            <td>{{c.level}}</td>
+            <td><input type="checkbox" [checked]="c.active == 1" (change)="toggleActive(i)"/></td>
+            <td>{{c.createTime | date: 'yyyy-MM-dd'}} </td>
+            <td><span class="text-blue bold pointer" [routerLink]="'/course/edit/' + c.id">Details</span></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="d-flex mt-2 mb-5">
+        <button *ngIf="offset < total" class="btn showMore rounded mx-auto" (click)="loadCourse()">SHOW MORE RESULTS</button>
+        <span *ngIf="offset >= total" class="mx-auto text-light">END OF THE LIST</span>
+      </div>
+    </div>
+      
+  </div>
+

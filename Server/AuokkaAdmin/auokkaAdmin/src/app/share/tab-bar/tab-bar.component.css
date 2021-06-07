@@ -1,0 +1,11 @@
+.tab {
+  margin-right: 50px;
+  color: #aaaaaa;
+  font-weight: 700;
+  padding:5px;
+}
+
+.tab-select {
+  color: #777777;
+  border-bottom: 4px solid #ff985d;
+}

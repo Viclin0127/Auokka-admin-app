@@ -1,0 +1,46 @@
+<div class="section" style="max-width:95%;height:100%">
+  <div style="width:100%;height:100%;box-shadow: 0 1px 3px rgba(26,26,26,.1);" class="bg-white">
+    <div class="flex-column p-3">
+      <div class="flex-row just-between">
+        <span class="section-title"><i class="far fa-edit"></i> {{text[lang].title}}</span>
+        <button class="btn bg-orange" (click)="sendContribution()">{{text[lang].submit}} <i *ngIf="submitProcessing" class="fas fa-circle-notch fa-spin"></i></button>
+      </div>
+      
+      <div class="mt-2 flex-row">
+        <div class="flex-column">
+          <input [placeholder]="text[lang].titleplaceholder" style="min-width:500px" [(ngModel)]="title"/>
+          <div id="dropfile" class="my-2 border rounded d-flex" style="height:300px;font-size:14pt;">
+            <i class="far fa-file-word fa-5x my-auto mx-5"></i>
+            <div id="dropfileInstruction" class="my-auto text-grey">{{text[lang].dropfiletextdefaultfirstline}} <br />{{text[lang].dropfiletextdefaultsecondline}}</div>
+            <div id="dropfileNameWrapper" style="display:none" class="my-auto">{{text[lang].selected}}: <span id="dropfileName" class="bold"></span></div>
+            <div id="dropfileNameError" style="display:none" class="my-auto text-red"></div>
+            <input id="dropfileInput" type="file" style="display:none" (change)="handleFileUpload($event.target.files)" />
+          </div>
+        </div>
+        <div class="flex-column ml-2" style="flex-grow:100">
+
+          <!--<button (click)="logTags()">asdas</button>-->
+
+          <div class="flex-column">
+            <b>{{text[lang].tagtitle}}</b>
+            <div class="flex-row flex-wrap mt-1">
+              <div *ngFor="let t of selectedtags" class="rounded border tag-selected" (click)="removeTag(t)">{{t.name}}</div>
+              <small *ngIf="selectedtags.length <= 0" class="text-grey">{{text[lang].tagemptytext}}</small>
+            </div>
+          </div>
+          <div class="flex-row mt-2">
+            <input id="key" [placeholder]="text[lang].searchtagplaceholder" [(ngModel)]="key" (keyup)="triggerSearch()" />
+          </div>
+          <div class="flex-column mt-2" [style.display]="key.length > 0 ? 'flex' : 'none'">
+            <b>Suggestions</b>
+            <div class="flex-row flex-wrap mt-1">
+              <div class="rounded border tag" (click)="addTag({id: key, name: key})">{{key}}</div>
+              <div *ngFor="let t of tags" class="rounded border tag" (click)="addTag(t)">{{t.name}}</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

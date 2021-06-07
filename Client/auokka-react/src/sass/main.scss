@@ -1,0 +1,504 @@
+
+:root {
+    --color-primary-blue:rgb(82,152,229);
+    --color-primary-blue-hover:rgb(111,171,236);
+    --color-primary-orange: rgb(242,156,104);
+    --color-primary-red: rgb(168,62,57);
+    --color-primary-red-light:rgb(194,74,69);
+    --color-primary-red-hover:rgb(172,87,84);
+    --color-primary-grey: #dedede;
+    --color-title-grey-active:#777777;
+    --color-text-grey: #777777;
+    --color-title-grey: #aaaaaa;
+    --color-border-orange:#ff985d;
+    --color-red-star:#d13f3f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 41.67%;      // 1rem = 10px; my default font-size is 24px  10/24
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.main {
+    display: flex;
+}
+
+/////////////////////////////////////////////
+///// NAVBAR
+.navbar {
+    background-color: var(--color-primary-blue);
+    width: 12rem;
+    min-height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+        margin: 1.5rem auto;
+
+    }
+
+    &__link {
+        text-decoration: none;
+        color: #fff;
+        height: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    &__icon {
+        font-size: 3.5rem;
+        font-weight: 900;
+    }
+
+    &__content {
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+}
+
+/////////////////////////////////////////////
+///// COURSE
+.main__course {
+    flex: 1;
+}
+
+.course-header {
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__content {
+        font-weight: 700;
+        font-size: 1.8rem;
+    }
+    
+    &__button {
+        cursor: pointer;
+    }
+}
+
+table {
+    width: 100%;
+}
+
+// the table in schedule-body uses almost the same css structure
+.course-container, .schedule-body {
+    width: 100%;
+    
+    &__table {
+        padding: 0 3rem;
+        font-size: 1.8rem;
+        margin: 0 auto;
+        border-spacing: 0 1rem;
+        border-collapse: separate;       
+    }
+
+    &__head {
+        background-color: var(--color-primary-orange);
+        color: #fff;
+        
+        & tr th {
+            min-width: 5rem;
+            padding: 2rem;
+            display: table-cell;
+            text-align: left;
+
+            // table header radius setting
+            &:first-child{
+                border-top-left-radius: .5rem;
+                border-bottom-left-radius: .5rem;
+            }
+            &:last-child{
+                border-top-right-radius: .5rem;
+                border-bottom-right-radius: .5rem;
+            }
+        }
+    }
+
+    &__body {
+        margin: .2rem 0;
+        & tr {
+            display: table-row;
+            & td {
+                padding: 2rem;
+                
+                // setting row's border
+                border-top: 1px solid var(--color-primary-grey);
+                border-bottom: 1px solid var(--color-primary-grey);
+
+                &:first-child {
+                    border-left: 1px solid var(--color-primary-grey);
+                    border-top-left-radius: .5rem;
+                    border-bottom-left-radius: .5rem;
+                }
+                &:last-child{
+                    border-right: 1px solid var(--color-primary-grey);
+                    border-top-right-radius: .5rem;
+                    border-bottom-right-radius: .5rem;
+                }
+
+                & img {
+                    object-fit: cover;
+                    width: 10rem;
+                    height: 10rem;
+                }
+
+                & a {
+                    text-decoration: none;
+                }
+
+                & span {
+                    color: var(--color-primary-blue);
+                    font-weight: 700;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        & tr:hover {
+            transform: translateY(-1px);
+            box-shadow: 1px 1px 7px #bdbdbd;
+            border-radius: .5rem;
+            transition: all .2s;
+        }
+    }
+}
+
+.course-footer {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    &__content {
+        font-size: 1.8rem;
+        color: #aaaaaa;
+    }
+}
+
+/////////////////////////////////////////////
+///// EDIT PAGE
+.main__edit {
+    flex: 1;
+}
+
+.edit-header {
+    padding: 3rem 3rem 0 3rem;
+
+    &__content {
+        background-color: var(--color-primary-orange);
+        color: #fff;
+        padding: 2rem;
+        font-weight: 700;
+        font-size: 1.8rem;
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
+    }
+}
+
+.edit-container {
+    margin: 0 3rem 3rem 3rem;
+    border: 1px solid var(--color-primary-grey);
+
+    &__header {
+        display: flex;
+        justify-content: center;
+
+        &--item {
+            cursor: pointer;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin: 2rem 3rem .5rem 3rem;
+            color: var(--color-title-grey);
+
+            &-active{
+                cursor: pointer;
+                font-size: 2.4rem;
+                margin: 2rem 3rem .5rem 3rem;
+                font-weight: 700;
+                color: var(--color-title-grey-active);
+                border-bottom: 4px solid var(--color-border-orange);
+            }
+        }
+    }
+}
+
+.basic-body {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+
+    &__course {
+
+    }
+
+    &__title {
+        font-size: 2.4rem;
+        color: var(--color-text-grey);
+        margin-bottom: 1rem;
+    }
+
+    &__input {
+        width: 30rem;
+        font-size: 1.5rem;
+        border: 1px solid var(--color-primary-grey);
+        padding: 1rem 1.5rem;
+    }
+
+    &__level {
+        margin-top: 2rem;
+    }
+
+    &__select {
+        width: 30rem;
+        font-size: 1.5rem;
+        border: 1px solid var(--color-primary-grey);
+        padding: 1rem 1.5rem;
+    }
+
+    &__desc {
+        margin-top: 2rem;
+    }
+
+    &__imgarea {
+        margin-top: 2rem;
+    }
+
+    &__img {
+        
+    }
+
+    &__upload {
+        margin: 1rem 0;
+    }
+}
+
+.details-body {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        font-size: 2.4rem;
+        color: var(--color-text-grey);
+        margin-bottom: 1rem;
+
+        &--content {
+
+        }
+    }
+
+    &__content {
+
+    }
+}
+
+.schedule-body__head {
+    background-color: grey;
+}
+
+.schedule-body__add {
+    padding: 2rem 3rem;
+}
+
+.operate-button {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 3rem 2rem 3rem;
+
+    &__cancel {
+        margin-right: 3rem;
+    }
+
+    &__submit {
+
+    }
+}
+
+/////////////////////////////////////////////
+///// RICH EDITOR
+.rich_editor {
+    width: 80%;
+    // height: 10rem;  // doesn't work..
+}
+
+.rich_editor_second {
+    width: 80%;
+    // height: 10rem;  // doesn't work..
+}
+
+/////////////////////////////////////////////
+///// BUTTON
+
+.btn_blue {
+    border: none;
+    color: #fff;
+    border-radius: .5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background-color: var(--color-primary-blue);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-primary-blue-hover);
+        transition: all .2s;
+    }
+}
+
+.btn_red {
+    border: none;
+    color: #fff;
+    border-radius: .5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background-color: var(--color-primary-red);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-primary-red-hover);
+        transition: all .2s;
+    }
+}
+
+/////////////////////////////////////////////
+///// RED STAR
+
+.red-star {
+    color: var(--color-red-star);
+
+    // add space to text content
+    &:before {
+        content: " ";
+    }
+}
+
+/////////////////////////////////////////////
+///// POPUP
+
+.popup {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    background: rgba(100, 100, 100, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-container {
+        margin: auto;
+        min-width: 60rem;
+        min-height: 50rem;
+        box-shadow: 1px 1px 7px #bdbdbd;
+        background: #fff;
+        z-index: 10;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--color-border-orange);
+        padding: 2rem 2.5rem;
+        color: #fff;
+        font-size: 1.6rem;
+        font-weight: 700;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    &-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem 5rem;
+
+        &__item {
+            margin-bottom: 2rem;
+        }
+        &__active{
+            display: flex;
+
+            & .popup-body__title {
+                margin-right: 1rem;
+            }
+
+            & input {
+                
+            }
+        }
+
+        &__title {
+            color: var(--color-text-grey);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        &__input {
+            width: 100%;
+            font-size: 1.5rem;
+            border: 1px solid var(--color-primary-grey);
+            padding: 1rem 1.5rem;
+        }
+
+        &__select {
+            width: 100%;
+            font-size: 1.5rem;
+            border: 1px solid var(--color-primary-grey);
+            padding: 1rem 1.5rem;
+        }
+
+        &__submit {
+            align-self: flex-end;
+        }
+    }
+}
+
+/////////////////////////////////////////////
+///// DATEPICKER
+.react-date-picker{
+    width: 100%;
+    display: block;
+
+    &__wrapper {
+        width: 100%;
+        height: 39px;
+        font-size: 1.5rem;
+        border: 1px solid var(--color-primary-grey);
+        padding: 1rem 1.5rem;
+    }
+}
+
+/////////////////////////////////////////////
+///// HIDDEN
+.hidden {
+    display: none;
+}

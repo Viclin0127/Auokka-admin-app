@@ -1,0 +1,21 @@
+.section-title{
+  font-weight: 700;
+  font-size: 16pt;
+}
+
+.tag {
+  font-size: 9pt;
+  padding: 5px;
+  margin: 5px;
+  cursor:pointer;
+}
+
+.tag-selected {
+  font-size: 9pt;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #454545;
+  color: white;
+  border: 1px solid #454545;
+}

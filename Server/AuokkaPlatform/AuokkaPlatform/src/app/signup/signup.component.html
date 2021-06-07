@@ -1,0 +1,95 @@
+<div class="section d-flex bg-blue" style="width: 100vw;height:100vh">
+  <div class="fixed text-white" style="right:30px;top:20px">
+    <span [class.language-tab-selected]="lang=='cn'" (click)="setLanguage('cn')" class="language-tab pointer" >中文</span> | <span [class.language-tab-selected]="lang=='en'" (click)="setLanguage('en')"  class="pointer language-tab">English</span>
+  </div>
+  <div class="bg-white m-auto flex-column signin-frame">
+    <div class="flex-column py-3 px-4" *ngIf="stage == 0">
+      <div class="mb-1" style="font-size: 16pt"><b>{{text[lang].title}}</b></div>
+      <span>{{text[lang].instruction}}</span>
+
+      <div class="flex-column py-1 mt-2">
+        <input [class.border-red]="!validateEmpty(validator.getValue('firstname')) && validator.touched('firstname')"
+               [placeholder]="text[lang].firstnameplaceholder"
+               (keyup)="validator.modify('firstname',$event.target.value)" />
+
+        <span [style.display]="validateEmpty(validator.getValue('firstname')) || !validator.touched('firstname') ? 'none':'block'"
+              class="hint text-red">
+          {{text[lang].firstnameempty}}
+        </span>
+      </div>
+
+      <div class="flex-column py-1">
+        <input [class.border-red]="!validateEmpty(validator.getValue('surname')) && validator.touched('surname')"
+               [placeholder]="text[lang].surnameplaceholder"
+               (keyup)="validator.modify('surname',$event.target.value)" />
+
+        <span [style.display]="validateEmpty(validator.getValue('surname')) || !validator.touched('surname') ? 'none':'block'"
+              class="hint text-red">
+          {{text[lang].surnameempty}}
+        </span>
+      </div>
+
+      <div class="flex-column py-1">
+        <input [class.border-red]="(!validateEmail(validator.getValue('email')) && validator.touched('email')) || emailExist"
+               [placeholder]="text[lang].emailplaceholder"
+               (keyup)="validator.modify('email',$event.target.value)"
+               (focusout)="emailUsed($event.target.value)" />
+
+        <span [style.display]="validateEmail(validator.getValue('email')) || !validator.touched('email') ? 'none':'block'"
+              class="hint text-red">
+          {{text[lang].emailinvalid}}
+        </span>
+
+        <span [style.display]="emailExist ? 'block':'none'"
+              class="hint text-red">
+          {{text[lang].emailexist}}
+        </span>
+
+      </div>
+      <div class="flex-column py-1">
+
+        <input [class.border-red]="!validateMobile(validator.getValue('mobile')) && validator.touched('mobile')"
+               [placeholder]="text[lang].mobileplaceholder" (keyup)="validator.modify('mobile',$event.target.value)" />
+
+        <span [style.display]="validateMobile(validator.getValue('mobile')) || !validator.touched('mobile') ? 'none':'block'"
+              class="hint text-red">
+          {{text[lang].mobileinvalid}}
+        </span>
+      </div>
+      <div class="flex-column py-1">
+        <input [class.border-red]="!validatePassword(validator.getValue('password')) && validator.touched('password')"
+               [placeholder]="text[lang].passwordplaceholder" type="password" (keyup)="validator.modify('password',$event.target.value)" />
+        <span [style.display]="validatePassword(validator.getValue('password')) || !validator.touched('password') ? 'none':'block'"
+              class="hint text-red"
+              id="passwordError">
+        </span>
+      </div>
+      <div class="flex-column py-1">
+        <input [placeholder]="text[lang].confirmpaswplaceholder"
+               [class.border-red]="validator.getValue('password') != confirmPassword" [(ngModel)]="confirmPassword" placeholder="confirm password" type="password" />
+        <span [style.display]="validator.getValue('password') == confirmPassword ? 'none':'block'"
+              class="hint text-red">
+          {{text[lang].passwordnotmatch}}
+        </span>
+      </div>
+      <div class="flex-column py-1">
+        <input [placeholder]="text[lang].wechat" (keyup)="validator.modify('wechat',$event.target.value)" />
+      </div>
+      <div class="flex-column mt-3">
+        <button class="btn" (click)="submit(validator.form)">
+          <b [style.display]="processing == 0?'block':'none'">{{text[lang].btnsignup}}</b>
+          <b [style.display]="processing == 1?'block':'none'">{{text[lang].btnsignupprocessing}}<i class="fas fa-circle-notch fa-spin"></i></b>
+        </button>
+      </div>
+      <div class="flex-column mt-2">
+        <span class="text-grey font-sm">{{text[lang].signinhint}} <b class="pointer" routerLink="/signin">{{text[lang].signinlink}}</b>{{text[lang].signinlinkafter}}</span>
+      </div>
+    </div>
+    <div class="flex-column py-3 px-4" *ngIf="stage == 1">
+      <b style="font-size:16pt"><i class="far fa-paper-plane"></i> {{text[lang].successtitle}}</b>
+      <span style="line-height:1.6" class="mt-2">{{text[lang].success}}</span>
+      <b class="my-2">{{validator.getValue('email')}}</b>
+      <span style="line-height:1.6">{{text[lang].next}}</span>
+    </div>
+  </div>
+</div>

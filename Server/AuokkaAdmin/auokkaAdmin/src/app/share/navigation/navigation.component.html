@@ -1,0 +1,8 @@
+<div class="navigation">
+  <div *ngFor="let t of tabs" class="my-3">
+    <div class="flex-column my-2 pointer " [routerLink]="t.link">
+      <span class="mx-auto text-white fas fa-circle-notch fa-2x mb-1"></span>
+      <span class="mx-auto bold text-white">{{t.label}}</span>
+    </div>
+  </div>
+</div>

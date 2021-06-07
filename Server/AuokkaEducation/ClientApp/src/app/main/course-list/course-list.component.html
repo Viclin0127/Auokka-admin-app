@@ -1,0 +1,8 @@
+<div class="d-flex mt-4 mb-1">
+  <span class="mx-auto title font-serif">{{title}}</span>
+</div>
+<app-course-item *ngFor="let s of courses" [course]="s"></app-course-item>
+<div class="d-flex mt-2 mb-5">
+  <button *ngIf="offset < totalSize" class="btn showMore rounded mx-auto" (click)="loadCourse(offset, pageSize)">SHOW MORE RESULTS</button>
+  <!--<span *ngIf="offset >= totalSize" class="mx-auto text-light">END OF THE LIST</span>-->
+</div>

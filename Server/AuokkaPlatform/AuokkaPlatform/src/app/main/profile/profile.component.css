@@ -1,0 +1,18 @@
+.fieldWrapper {
+  width:50%;
+}
+
+.field {
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+}
+
+.field input{
+  margin-top:5px;
+}
+
+.hint {
+  font-size: 10pt;
+  margin-top: 5px;
+}

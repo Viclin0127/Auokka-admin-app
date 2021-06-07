@@ -1,0 +1,38 @@
+<div class="section d-flex pt-3" *ngIf="!loading">
+  <div class="container mx-auto px-3">
+    <div class="section-title font-serif">Registration</div>
+    <div class="enrol-card flex-row">
+      <div>
+        <img [src]="'http://119.9.52.51:9997/api/files/image/course/' + course.image" style="max-width:250px;"/>
+      </div>
+      <div class="mx-3">
+        <div style="font-size: 14pt;">Course: {{course.name}}</div>
+        <div>Please select one of the sessions below</div>
+        <div style="margin-top:20px;">
+          <div *ngFor="let s of course.schedule" class="flex-row course-detail">
+            <div style="margin:0">
+              <input type="radio" (change)="setSelectedSchedule(s)" [checked]="selectedSchedule.id == s.id" />
+            </div>
+            <div style="margin:0" class="flex-column flex-md-row" >
+              <span>{{s.from | date: 'yyyy-MM-dd'}}  {{' - '}}  {{s.to | date: 'yyyy-MM-dd'}}</span>
+              <span>{{s.location}}</span>
+              <span class="bold">${{s.defaultPrice.amount.toFixed(2)}}</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section d-flex" *ngIf="selectedSchedule.id != null">
+  <div class="container mx-auto px-3">
+    <div class="enrol-card p-3">
+      <div style="font-size:14pt;" class="px-2">Please fill in the student detail</div>
+      <div class="py-1">
+        <app-enrol-form [buttonText]="'Submit'" [model]="enrollment" (emitter)="submit($event)"></app-enrol-form>
+      </div>
+    </div>
+  </div>
+</div>

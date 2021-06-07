@@ -1,0 +1,95 @@
+<div class="section d-flex  flex-column text-white top-banner" style="min-height:0">
+  <!--<div class="main-banner-title" *ngIf="!switching" [@slideToLeftOut]>
+    <div class="font-serif font-thin">
+      Enrich Your Knowledge
+    </div>
+    <div class="main-banner-content">
+      This course introduces you to the basics of the Swift programming language. You will use a playground environment to instantly see what your code does.
+    </div>
+    <div class="my-2">
+      <button class="btn rounded" style="font-size:9pt;" routerLink="/main/train">FIND OUT COURSES</button>
+    </div>
+  </div>-->
+  <div class="main-banner-img-wrapper">
+    <img *ngIf="!switching" style="width:100%;" [src]="'../../../assets/image/main/' + images[currentImg]" [@slideToLeftOut] />
+    <!--<img *ngIf="currentImg % 3 == 0" style="width:100%;" src="../../../assets/image/main/main-banner.jpg" [@slideToLeftOut]/>
+    <img *ngIf="currentImg % 3 == 1" style="width:100%;" src="../../../assets/image/main/main-banner2.jpg" [@slideToLeftOut]/>
+    <img *ngIf="currentImg % 3 == 2" style="width:100%;" src="../../../assets/image/main/main-banner3.jpg" [@slideToLeftOut]/>-->
+
+  </div>
+</div>
+
+<div class="section d-flex py-2 mt-5"> 
+  <div class="container mx-auto flex-column px-5">
+    <div class="font-serif mb-2 section-title" style="font-size:20pt">WHO WE ARE</div>
+    <div class="text-grey" style="font-size:16pt;line-height:150%">
+      Auokka is developing a ecosystem to provide continue education for people who willing to develop in-demand skills by learning  from experts. We are establishing partnership with training institutes, enterprises and universities to offer quality short-courses in IT industry. And also developing a teaching team consist with professionals/experts with various skillset and knowledge which cover software development, data analytics, AI and Machine Learning.
+    </div>
+  </div>
+</div>
+
+<div class="section d-flex py-2">
+  <div class="container mx-auto flex-column px-5">
+    <div class="font-serif mb-2 section-title" >AT AUOKKA WE PROVIDE</div>
+    <div class="text-grey" style="font-size:16pt;">
+      <ul>
+        <li>Continuing Education for people to develop in-demand skills by learning  from experts</li>
+        <li>Eco-system to bridge fresh graduates and various industries</li>
+        <li>Management platform to ensure course quality for student, trainer, institute, university and enterprise</li>
+        <li>Open community to share experience and FAQ: technical questions, career opportunity,  start-up etc…</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section d-flex py-2">
+  <div class="container mx-auto flex-column  px-5">
+    <div class="font-serif mb-2 section-title">FOR TRAINING INSTITUTE</div>
+    <div class="text-grey" style="font-size:16pt;">
+      We will help
+      <ul>
+        <li>Enlarge in their market share via marketing activities/university engagement/enterprise corporation/employers’ feedback</li>
+        <li>
+          Provide uniform quality teaching material
+        </li>
+        <li>
+          Provide trained teachers
+        </li>
+        <li>
+          Develop more in-demand courses for industrial and commercial company
+        </li>
+        <li>Develop more channels/partnership with companies</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section d-flex py-2">
+  <div class="container mx-auto flex-column  px-5">
+    <div class="font-serif mb-2 section-title">FOR UNIVERSITY</div>
+    <div class="text-grey" style="font-size:16pt;">
+      We will help
+      <ul>
+        <li>Enhance marketing and teaching activities for continue/after-degree education</li>
+        <li>
+          Develop in-demand short courses with professional from various fields.
+        </li>
+        <li>Minimize cost on short-course development as we provide marketing, course material and teaching</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section d-flex py-2 mb-5">
+  <div class="container mx-auto flex-column  px-5">
+    <div class="font-serif mb-2 section-title">FOR STUDENT</div>
+    <div class="text-grey" style="font-size:16pt;">
+      We will provide
+      <ul>
+        <li>Bridge the graduate to their careers via up-to-date tech, career advice and job opportunities service</li>
+        <li>In-demand short-course training to improve and upgrade their knowledge, technique and professional skills.</li>
+        <li>Training certificate via university recognition (we are proposing now)</li>
+      </ul>
+    </div>
+  </div>
+</div>

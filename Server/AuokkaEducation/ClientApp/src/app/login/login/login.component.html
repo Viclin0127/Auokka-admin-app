@@ -1,0 +1,26 @@
+<div style="width:100vw;height:100vh" class="d-flex bg-blue">
+  
+  <div class="login my-auto">
+    <div class="mx-auto d-flex my-1">
+      <img src="../../../assets/image/main/logoauokka-light-md.png" routerLink="/main" class="pointer"/>
+    </div>
+    <div class="login-card mx-auto just-around my-1">
+      <div class="login-fields">
+        <span class="mb-1 bold">Log in to your account</span>
+        <input placeholder="Username" [(ngModel)]="student.username"/>
+        <input type="password" placeholder="Password" [(ngModel)]="student.password" />
+        <span>Forgot password?</span>
+        <button class="btn rounded my-3" style="width: 100%" (click)="login()">Log In</button>
+        <span class="text-red bold mt-1">{{error}}</span>
+      </div>
+      <div>
+        
+        <span>
+          Not with us? <span class="bold pointer" routerLink="/main/signup">Click here</span> to sign up.
+        </span>
+      </div>
+      
+    </div>
+    
+  </div>
+</div>

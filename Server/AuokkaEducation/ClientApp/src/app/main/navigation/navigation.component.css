@@ -1,0 +1,92 @@
+.navigation
+{
+  min-height: 50px;
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+  flex-direction:column-reverse;
+}
+
+
+
+.login-bar{
+  color:white;
+  padding:10px 40px 10px 40px;
+  font-weight: 700;
+}
+
+.toggler {
+  display: none;
+}
+.navTabsWrapper div {
+  margin: 10px auto 10px auto;
+}
+
+@media screen and (max-width: 767px) {
+  .show{
+    display:flex;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .toggler{
+    display:block;
+  }
+
+  .logo{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .toggleWrapper{
+    width:100%;
+  }
+}
+@media screen and (min-width: 768px) {
+
+  .navigation {
+    min-height: 50px;
+    border-bottom: 1px solid #dddddd;
+    display: flex;
+    flex-direction: column;
+  }
+  .navTabsWrapper{
+    width: 75%;
+    font-size: 10pt;
+  }
+
+  .navTabsWrapper div {
+    margin:auto 10px auto 10px;
+    cursor: pointer;
+  }
+
+  .alwaysVisible {
+    visibility: visible !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+
+  .navTabsWrapper {
+    width: 70%;
+    font-size: 12pt;
+  }
+}
+
+@media screen and (min-width: 1199px) {
+  .navTabsWrapper {
+    width: 60%;
+    max-width: 800px;
+    font-size: 14pt;
+  }
+}
+
+.navTabsWrapper div {
+  cursor: pointer;
+  
+}
+
+.navTabsWrapper div:focus {
+  outline: 0;
+}

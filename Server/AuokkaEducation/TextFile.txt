@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext "Server=localhost;port=3306;Database=Auokka;username=root;password=root" pomelo.entityframeworkcore.mysql -OutputDir Models -Force

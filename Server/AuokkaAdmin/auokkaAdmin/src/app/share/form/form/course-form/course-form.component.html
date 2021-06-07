@@ -1,0 +1,120 @@
+<div class="modal-outer" *ngIf="showScheduleModal">
+  <div class="modal-inner">
+    <div class="modal-body">
+      <div class="form-section">
+        <div class="form-section-header flex-row just-between">
+          <span>{{editingSchedule.id == null ? 'New Schedule' : 'Edit Schedule'}}</span>
+          <span class="pointer" (click)="showScheduleModal = !showScheduleModal;scheduleProcessingStatus = 0;"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="form-section-body" style="border:0">
+          <app-schedule-form [schedule]="editingSchedule" (emitter)="scheduleSubmit($event)" [processStatus]="scheduleProcessingStatus"></app-schedule-form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="width:100%" class="flex-column">
+  <app-tab-bar [tabs]="tabs" (emitter)="currentStage = $event" [current]="currentStage" [switchable]="false" [inOrder]="true"></app-tab-bar>
+  <div class="flex-column py-3 px-3" style="width:100%;max-width:1024px;" *ngIf="currentStage == 0">
+
+
+    <div class="mr-3 text-grey">
+      <div class="mb-1">
+        Course Title <span class="text-red">*</span>
+      </div>
+
+      <input type="text" [(ngModel)]="model.name" [class.border-red]="!validator.verify(model.name, 'Course Title', 'required')"/>
+      <small class="text-red">{{valid(model.name, 'Course Title', 'required')}}</small>
+    </div>
+
+    <div class="mt-2 mr-3 text-grey">
+      <div class="mb-1">
+        Level <span class="text-red">*</span>
+      </div>
+      <select [(ngModel)]="model.level"  [class.border-red]="!validator.verify(model.level, 'Course Level', 'required')">
+        <option>Entry</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+      </select>
+      <small class="text-red">{{valid(model.level, 'Course Level', 'required')}}</small>
+    </div>
+
+    <div class="mt-2 mr-3 text-grey">
+      <div class="mb-1">
+        Short Description <span class="text-red">*</span>
+      </div>
+      <textarea style="width:80%;height:100px" [(ngModel)]="model.description" [class.border-red]="!validator.verify(model.description, 'Short Description', 'required')"></textarea>
+      <small class="text-red">{{valid(model.description, 'Short Description', 'required')}}</small>
+    </div>
+
+
+    <div class="text-grey mt-2">
+      <div>Image</div>
+      <div><img *ngIf="model.image != null" [src]="imageServer + '/api/files/image/course/' + model.image" style="max-height:200px;" /></div>
+      <div><input type="file" style="display:none" #fileUpload (change)="handleFileUpload($event.target.files)" /></div>
+      <div class="my-1"><button class="btn bg-red rounded" (click)="fileUpload.click()">Upload</button></div>
+    </div>
+
+
+  </div>
+
+  <div class="flex-column py-2 mx-auto courseIntroSection" style="width:100%" *ngIf="currentStage == 1">
+    <div *ngFor="let ci of courseIntro;index as i " class="courseIntroWrapper" style="width:100%">
+      <div class="courseIntro mr-3 text-grey px-3" style="width:100%;max-width:1024px;">
+        <div class="courseIntroFieldTitle">Information section {{i+1}} <span class="text-red-alt pointer" (click)="removeSection(i)"><i class="far fa-trash-alt"></i></span></div>
+        <div class="courseIntroField">
+          <div>Title</div>
+          <input type="text" [(ngModel)]="ci.title"   [class.border-red]="!validator.verify(ci.title, 'Title'+i, 'required')"/>
+          <small class="text-red">{{valid(ci.title, 'Title', 'required')}}</small>
+        </div>
+        <div class="courseIntroField">
+          <div>Navigatable</div>
+          <input type="checkbox" [(ngModel)]="ci.showOnSide" />
+
+        </div>
+        <div class="courseIntroField">
+          <div>Content</div>
+          <textarea style="width:80%;height:200px" [(ngModel)]="ci.content"   [class.border-red]="!validator.verify(ci.content, 'Content'+i, 'required')"></textarea>
+          <small class="text-red">{{valid(ci.content, 'Content', 'required')}}</small>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div style="width:100%;">
+      <div class=" p-3" style="width:100%;max-width:1024px;">
+        <div class="flex-row">
+          <button class="btn bg-red rounded" (click)="addEmptyIntro()">Add Intro Section</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="currentStage == 2">
+    <div class="section d-flex py-2">
+      <div class="container">
+        <app-schedule-list [schedules]="schedules" [color]="'grey'" (editHandler)="editSchedule($event)"></app-schedule-list>
+        <div class="px-3 py-2"><button class="btn bg-red rounded" (click)="editSchedule()">Add Schedule</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-3 d-flex just-end">
+    <button class=" btn bg-red rounded" (click)="currentStage = currentStage - 1" *ngIf="currentStage > 0 ">Back</button>
+    <button class=" btn bg-red rounded" routerLink="/course" *ngIf="currentStage == 0 ">Cancel</button>
+    <button class="ml-3 btn rounded" (click)="next(currentStage)" *ngIf="currentStage < 2">Next</button>
+    <div class="ml-3 d-flex just-end" *ngIf="currentStage == 2">
+      <button *ngIf="processStatus == 0 || processStatus == 2 || processStatus == -1" class="btn rounded" (click)="submit()">Submit</button>
+      <button *ngIf="processStatus == 1" class="btn rounded"><i class="fas fa-circle-notch fa-spin"></i></button>
+      <span *ngIf="processStatus == 2" class="text-green mx-1"><i class="far fa-check-circle"></i> Success!</span>
+      <span *ngIf="processStatus == -1" class="text-red-alt mx-1"><i class="far fa-times-circle"></i> Failed</span>
+    </div>
+  </div>
+
+  
+</div>
+
+
+

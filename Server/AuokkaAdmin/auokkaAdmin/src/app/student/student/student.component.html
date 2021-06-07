@@ -1,0 +1,67 @@
+<!--<div class="modal-outer" *ngIf="showModal">
+  <div class="modal-inner">
+    <div class="modal-body">
+      <div class="form-section">
+        <div class="form-section-header flex-row just-between">
+          <span>{{editingTeacher.id == null ? 'New Teacher' : 'Edit Teacher'}}</span>
+          <span class="pointer" (click)="showModal = !showModal;teacherProcessingStatus = 0;"><i class="far fa-times-circle"></i></span>
+        </div>
+        <div class="form-section-body" style="border:0">
+          <app-teacher-form [model]="editingTeacher" (emitter)="teacherSubmit($event)" (cancel)="showModal = !showModal;" [processStatus]="teacherProcessingStatus"></app-teacher-form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>-->
+
+<div class="section py-3">
+  <div class="container">
+    <div class="flex-row just-between px-3">
+      <div class="section-title bold">Student</div>
+    </div>
+
+  </div>
+
+</div>
+<div class="section">
+  <div class="container">
+    <table class="px-3 table">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th *ngFor="let c of columns" [class.pointer]="c.sortable" (click)="students = (c.sortable ? sort(students, c) : students)">
+            {{c.label}}
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of students;index as i">
+          <td>
+            <span>{{i+1}}</span>
+          </td>
+          <td>{{t.firstname}}</td>
+          <td>{{t.surname}}</td>
+          <td>{{t.email}}</td>
+          <td>{{t.birthDate | date: 'yyyy-MM-dd'}}</td>
+          <td>{{t.mobile}}</td>
+          <td>{{t.school}}</td>
+          <td class="bold text-blue">Details</td>
+        </tr>
+      </tbody>
+    </table>
+
+    
+  </div>
+
+</div>
+<div class="section">
+  <div class="container">
+    <div class="d-flex mt-2 mb-5">
+      <button *ngIf="offset < total" class="btn showMore rounded mx-auto" (click)="loadTeacher()">SHOW MORE RESULTS</button>
+      <span *ngIf="offset >= total" class="mx-auto text-light">END OF THE LIST</span>
+    </div>
+  </div>
+
+</div>

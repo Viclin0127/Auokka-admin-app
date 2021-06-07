@@ -1,0 +1,29 @@
+.field {
+  margin: 20px 0px 20px 0px;
+}
+
+  .field .field-title {
+    margin-bottom: 10px;
+  }
+
+thead {
+  background-color: white;
+  border-radius: 0;
+}
+
+tbody tr {
+  border-radius: 0;
+}
+
+input[type="text"] {
+  width: 500px;
+}
+
+select {
+  width: 532px;
+}
+
+small {
+  color: #d13f3f;
+  margin-top: 5px;
+}

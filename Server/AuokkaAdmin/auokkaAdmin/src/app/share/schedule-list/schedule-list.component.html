@@ -1,0 +1,31 @@
+<div class="section">
+  <div class="container">
+    <table class="px-3 table">
+      <thead [style.background-color]="color">
+        <tr>
+          <th>No.</th>
+          <!--<th>Course</th>-->
+          <th>Begin</th>
+          <th>End</th>
+          <th>Location</th>
+          <th>Fee</th>
+          <th>Active</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of schedules;index as i">
+          <td>{{i+1}}</td>
+          <!--<td>{{s.course.name}}</td>-->
+          <td>{{s.from | date: 'yyyy-MM-dd'}}</td>
+          <td>{{s.to | date: 'yyyy-MM-dd'}}</td>
+          <td>{{s.location}}</td>
+          <td>${{s.defaultPrice.amount.toFixed(2)}}</td>
+          <td><input type="checkbox" [checked]="s.active == 1" (change)="toggleActive(i)"/></td>
+          <td><span class="text-blue bold pointer" (click)="editHandler.emit(i)">Details</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

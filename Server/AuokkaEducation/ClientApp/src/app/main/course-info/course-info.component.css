@@ -1,0 +1,88 @@
+.course-title
+{
+  font-size: 18pt;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.course-info {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.course-schedule{
+  font-size:14pt;
+  line-height:200%;
+}
+
+.course-schedule div {
+  width: 25%;
+}
+
+.course-schedule-date{
+  width:50%;
+}
+
+.course-structure-card {
+  box-shadow: 0px 0px 30px #dcdcdc;
+  min-width: 25%;
+  flex-direction: column;
+  display: flex;
+  position: sticky;
+  top: 20px;
+  background-color: white;
+}
+.course-structure-card-body {
+  padding:15px;
+}
+
+.detail-item .detail-title{
+  font-family: 'Times New Roman', Times, serif;
+  font-size:18pt;
+}
+
+.detail-item .detail-content {
+  line-height: 160%;
+  color: #aaaaaa;
+}
+
+.sideTab {
+  color: #777777;
+  border: 1px solid #cccccc;
+  font-size: 14pt;
+  padding: 20px 25px 20px 25px;
+  background-color: white;
+}
+.sideTab:hover {
+  color: inherit;
+  background-color: #efefef;
+}
+
+.sideTab-active {
+  color: inherit;
+  background-color: #efefef;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 18pt;
+
+}
+
+@media screen and (min-width: 768px) {
+  .course-title {
+    font-size: 25pt;
+  }
+  .course-schedule-date {
+    width: 40%;
+  }
+}
+
+
+@media screen and (min-width: 1199px) {
+  .course-title {
+    font-size: 30pt;
+  }
+  .course-schedule-date {
+    width: 30%;
+  }
+}

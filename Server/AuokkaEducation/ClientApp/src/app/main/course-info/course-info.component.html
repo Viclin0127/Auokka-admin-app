@@ -1,0 +1,59 @@
+<div class="course-info">
+  <div class="section d-flex py-3">
+    <div class="container flex-column mx-auto px-2">
+      <div class="course-title mx-auto">
+        {{course.name}}
+      </div>
+      <div class="flex-column flex-sm-row just-center mx-auto mt-2">
+        <div class="mb-2">
+          <span><i class="fas fa-signal"></i> {{course.level}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container flex-column flex-md-row mx-auto">
+
+
+      <div style="min-width:25%" class="mx-3">
+        <img class="mb-2" style="width:100%;max-width:360px;display:block" *ngIf="course.image != null" [src]="imageServer + '/api/files/image/course/' + course.image" />
+        <div class="course-structure-card  mb-2">
+          <div class="course-structure-card-body flex-column">
+            <div *ngFor="let t of tabs;index as i" class="sideTab" [class.sideTab-active]="selectedTab == i" (click)="slideTo(t.title, i)">
+              {{t.title}}
+            </div>
+          </div>
+          <button class="btn" style="padding-top:20px;padding-bottom:20px;" [routerLink]="'/main/enrol/' + course.id">REGISTER</button>
+        </div>
+      </div>
+      <div class="course-detail mx-3" style="flex-grow:100">
+        <div class="detail-item mb-2">
+          <div class="detail-title mb-1">
+            Course Schedule
+          </div>
+          <div class="text-dark flex-column">
+            <div *ngFor="let s of course.schedule" class="flex-row course-schedule">
+              <span class="course-schedule-date">{{s.from | date : "yyyy-MM-dd"}} - {{s.to | date : "yyyy-MM-dd"}}</span>
+              <div class="">{{s.location}}</div>
+              <div class="bold">${{s.defaultPrice.amount.toFixed(2)}}</div>
+            </div>
+          </div>
+        </div>
+        
+        <div [id]="d.title" *ngFor="let d of course.parsedDetail" class="detail-item mb-2">
+          <div class="detail-title mb-1">
+            {{d.title}}
+          </div>
+          <div class="detail-content">
+            {{d.content}}
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  
+</div>
+

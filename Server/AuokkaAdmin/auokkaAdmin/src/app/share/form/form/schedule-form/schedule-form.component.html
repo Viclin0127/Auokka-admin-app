@@ -1,0 +1,68 @@
+<div class="px-5 text-grey">
+  <div class="field">
+    <div class="field-title">
+      Begin <span class="text-red">*</span>
+    </div>
+    <div>
+      <input type="text"
+             placeholder=""
+             bsDatepicker
+             (bsValueChange)="handleDateChange('from', $event)"
+             [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass: 'theme-default' }"
+             [bsValue]="schedule.from"
+             value="{{ schedule.from | date:'yyyy-MM-dd' }}">
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="field-title">
+      End <span class="text-red">*</span>
+    </div>
+    <div>
+      <input type="text"
+             placeholder=""
+             bsDatepicker
+             (bsValueChange)="handleDateChange('to', $event)"
+             [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass: 'theme-default' }"
+             [bsValue]="schedule.to"
+             value="{{ schedule.to | date:'yyyy-MM-dd' }}">
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="field-title">
+      Location <span class="text-red">*</span>
+    </div>
+    <div>
+      <select [(ngModel)]="schedule.location">
+        <option>Sydney</option>
+        <option>Melbourne</option>
+        <option>Brisbane</option>
+        <option>Perth</option>
+        <option>Adelaide</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="field-title">
+      Fee <span class="text-red">*</span>
+    </div>
+    <input type="number" [(ngModel)]="schedule.defaultPrice.amount"/>
+  </div>
+
+  <div class="field">
+    <div class="field-title">
+      Active <input type="checkbox" [checked]="schedule.active == 1" (change)="toggleActive($event)"/>
+    </div>
+  </div>
+
+  <div class="field flex-row just-end">
+    <div>
+      <button *ngIf="processStatus == 0 || processStatus == 2 || processStatus == -1" class="btn rounded" (click)="submit()">Submit</button>
+      <button *ngIf="processStatus == 1" class="btn rounded"><i class="fas fa-circle-notch fa-spin"></i></button>
+      <span *ngIf="processStatus == 2" class="text-green mx-1"><i class="far fa-check-circle"></i> Updated</span>
+      <span *ngIf="processStatus == -1" class="text-red-alt mx-1"><i class="far fa-times-circle"></i> Update failed</span>
+    </div>
+  </div>
+</div>

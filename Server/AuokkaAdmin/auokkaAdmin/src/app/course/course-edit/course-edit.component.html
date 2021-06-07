@@ -1,0 +1,22 @@
+<!--<div class="section-title bold px-3 pt-3" >{{course == null ? 'Edit Course' : course.name}}</div>-->
+<div class="section d-flex py-2" *ngIf="status >= 2">
+  <div class="container">
+    <div class="form-section mx-3">
+      <div class="form-section-header flex-row just-between">
+        <span>Edit Course</span>
+        <!--<span class="font-thin pointer" style="font-size:12pt" (click)="infoSectionCollapse = !infoSectionCollapse">
+          <i class="far fa-minus-square fa-lg" [style.display]="infoSectionCollapse ? 'block' : 'none'"></i>
+          <i class="far fa-plus-square fa-lg" [style.display]="infoSectionCollapse ? 'none' : 'block'"></i>
+        </span>-->
+
+      </div>
+      <div class="form-section-body" [style.display]="infoSectionCollapse ? 'block' : 'none'">
+        <app-course-edit-form [model]="this.course" [f]="f" (emitter)="updateCourse($event)" [processStatus]="processStatus" [status]="status"></app-course-edit-form>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+

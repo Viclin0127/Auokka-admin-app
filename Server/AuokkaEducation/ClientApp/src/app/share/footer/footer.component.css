@@ -1,0 +1,27 @@
+.footer{
+  min-height:300px;
+}
+
+.footer-upper{
+  min-height: 190px;
+}
+
+.footer-lower{
+  min-height: 50px;
+}
+
+.all-margin-y div {
+  margin-bottom: 10px;
+}
+
+.all-margin-bot-lg div {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer-upper-right {
+    width: 30%;
+    max-width: 500px;
+  }
+}
+  

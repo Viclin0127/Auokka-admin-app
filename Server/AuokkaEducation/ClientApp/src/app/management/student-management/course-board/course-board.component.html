@@ -1,0 +1,17 @@
+<div class="section" style="min-height:100px">
+  <div *ngIf="enrollments.length == 0" class="text-light" style="font-size:14pt;">No record</div>
+  <div class="container mx-auto">
+    <div class="flex-row flex-wrap">
+      <div class="course-item" *ngFor="let e of enrollments">
+        <div style="width:100%;height:70%">
+          <img style="width:100%;height:100%" [src]="'http://119.9.52.51:9997/api/files/image/course/' + e.course.image" />
+        </div>
+        <div class="bold course-detail">
+          <div>{{e.course.name}}</div>
+          <div class="text-light mt-1 font-thin">{{e.from | date: 'dd MMM yyyy'}} - {{e.to | date: 'dd MMM yyyy'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

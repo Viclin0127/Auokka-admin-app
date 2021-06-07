@@ -1,0 +1,68 @@
+<div class="section py-3" >
+  <div class="container mx-auto">
+    <div class="px-2 px-md-3">
+      <span class="mb-2 bold success-title">
+        <i class="far fa-check-circle text-green"></i> Thank you for choosing Auokka, you have successfully register with our course
+      </span>
+
+      <div class="flex-column flex-lg-row">
+        <div class="my-2 course-info-card flex-row flex-wrap">
+          <span style="width:100%;display:block;font-size:14pt;" class="mb-1 bold">
+            Course
+          </span>
+          <div class="course-title" style="width:100%;">
+            <label>Course Title</label>
+            <span>{{enrollment.schedule.course.name}}</span>
+          </div>
+          <div>
+            <label>Date start</label>
+            <span>{{enrollment.schedule.from | date: 'yyyy-MM-dd'}}</span>
+          </div>
+          <div>
+            <label>Date complete</label>
+            <span>{{enrollment.schedule.to | date: 'yyyy-MM-dd'}}</span>
+          </div>
+          <div>
+            <label>Location</label>
+            <span>{{enrollment.schedule.location}}</span>
+          </div>
+          <div>
+            <label>Tuition Fee</label>
+            <span>${{enrollment.fee ? enrollment.fee.toFixed(2) : ''}}</span>
+          </div>
+        </div>
+
+        <div class="my-2 course-info-card flex-row flex-wrap">
+          <span style="width:100%;display:block;font-size:14pt;" class="mb-1 bold">
+            Student
+          </span>
+          <div>
+            <label>Name</label>
+            <span>{{enrollment.enrolFirstname}} {{' '}} {{enrollment.enrolSurname}}</span>
+          </div>
+          <div>
+            <label>Email</label>
+            <span>{{enrollment.enrolEmail}}</span>
+          </div>
+          <div>
+            <label>Phone</label>
+            <span>{{enrollment.enrolPhone}}</span>
+          </div>
+          <div>
+            <label>Date of Birth</label>
+            <span>{{enrollment.enrolBirthDate | date: 'yyyy-MM-dd'}}</span>
+          </div>
+          <div>
+            <label>School</label>
+            <span>{{enrollment.enrolSchool}}</span>
+          </div>
+        </div>
+
+      </div>
+
+      
+      
+    </div>
+    <div class="d-flex"><button class="btn rounded mx-auto" routerLink="/main/train">See More Courses</button></div>
+  </div>
+</div>

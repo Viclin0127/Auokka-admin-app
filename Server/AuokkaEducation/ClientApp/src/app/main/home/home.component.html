@@ -1,0 +1,84 @@
+<div class="section d-flex  flex-column text-white top-banner" style="min-height:0">
+  <div class="main-banner-title"  *ngIf="!switching" [@slideToLeftOut]>
+    <div class="font-serif font-thin">
+      Auokka
+    </div>
+    <div class="main-banner-content">
+      Help towards a career success
+    </div>
+    <div class="my-2">
+      <button class="btn rounded" style="font-size:9pt;" routerLink="/main/train">FIND OUT COURSES</button>
+    </div>
+  </div>
+  <div class="main-banner-img-wrapper">
+    <img *ngIf="!switching" style="width:100%;" [src]="'../../../assets/image/main/' + images[currentImg]" [@slideToLeftOut]/>
+    <!--<img *ngIf="currentImg % 3 == 0" style="width:100%;" src="../../../assets/image/main/main-banner.jpg" [@slideToLeftOut]/>
+    <img *ngIf="currentImg % 3 == 1" style="width:100%;" src="../../../assets/image/main/main-banner2.jpg" [@slideToLeftOut]/>
+    <img *ngIf="currentImg % 3 == 2" style="width:100%;" src="../../../assets/image/main/main-banner3.jpg" [@slideToLeftOut]/>-->
+
+  </div>
+</div>
+
+<div class="section d-flex py-5">
+  <div class="container mx-auto">
+    <div class="flex-column flex-ml-row">
+      <div class="mx-1 mx-md-5 d-flex">
+        <img class="mx-auto mx-ml-0 intro-img" style="width:500px;" src="../../../assets/image/main/about-us.png" />
+      </div>
+      <div class="mx-5 py-5 introduction">
+        <div class="sub-section-title font-serif">
+          Introducing Auokka
+        </div>
+        <div class="my-2 text-grey" style="font-size: 14pt;line-height:150%">
+          Auokka is developing an ecosystem to get involved with trainee, trainers, institutes, universities and enterprises to provide quality continue education and after-degree career services.
+        </div>
+        <div class="my-2">
+          <button class="btn rounded">FIND OUT MORE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section d-flex py-3 bg-green text-white">
+  <div class="container mx-auto">
+    <div class="flex-column">
+      <div class="sub-section-title font-serif d-flex"><span class="mx-auto">Our Specialties</span></div>
+      <div class="flex-row flex-wrap just-around whyauokka">
+        <div>
+          <img style="width:100px;height:100px;" src="../../../assets/image/main/specialties1.png" />
+          <label>EXCELLENT CURRICULUM</label>
+          <span>Description</span>
+        </div>
+        <div>
+          <img style="width:100px;height:100px;" src="../../../assets/image/main/specialties2.png" />
+          <label>CERTIFICATION</label>
+          <span>Description</span>
+        </div>
+        <div>
+          <img style="width:100px;height:100px;" src="../../../assets/image/main/specialties3.png" />
+          <label>PROFESSIONAL GRADUATES</label>
+          <span>Description</span>
+        </div>
+        <div>
+          <img style="width:100px;height:100px;" src="../../../assets/image/main/specialties4.png" />
+          <label>ACCESSIBLE RESOURCES</label>
+          <span>Description</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section d-flex" style="">
+  <div class="container flex-row just-between mx-auto">
+    <div class="flex-column p-5"  style="width:50%;">
+      <div class="font-serif testimony mx-auto">
+        "Auokka has helped me to gain my business knowledge that I can apply to the real world. I made the right choice to learn here."
+      </div>
+      <span class="mt-2 italic">Jane Doe, Managing Consultant of Ainasoar</span>
+    </div>
+    <div style="width:50%;" class="flex-column just-end">
+      <img style="max-width:100%;" src="../../../assets/image/main/1.png" />
+    </div>
+  </div>
+  
+</div>

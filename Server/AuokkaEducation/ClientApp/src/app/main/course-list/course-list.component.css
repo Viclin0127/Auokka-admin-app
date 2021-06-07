@@ -1,0 +1,23 @@
+.title {
+  font-size: 24pt;
+}
+
+.showMore {
+  background-color: transparent;
+  border: 1px solid #bebebe;
+  color: #343434;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.showMore:hover {
+  background-color: #343434;
+
+  color: white;
+}
+
+.showMore:active {
+  background-color: transparent;
+
+  color: #343434;
+}

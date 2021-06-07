@@ -1,0 +1,18 @@
+
+<div style="width:100%" class="d-flex just-center">
+  <div class="flex-column flex-wrap" style="width:100%;max-width:1024px;">
+    <div class="font-serif mb-2" style="width:100%;font-size:20pt;">{{title}}</div>
+    <div class="flex-row flex-wrap field-wrapper">
+      <div *ngFor="let f of fields;index as i" class="field">
+        <app-field [field]="f" (content)="updateField(i, $event)"></app-field>
+      </div>
+    </div>
+    
+    <div class="my-2 flex-row" style="width:100%;">
+
+      <button class="btn rounded" (click)="submit()">{{buttonText}}</button>
+    </div>
+  </div>
+  
+</div>
+

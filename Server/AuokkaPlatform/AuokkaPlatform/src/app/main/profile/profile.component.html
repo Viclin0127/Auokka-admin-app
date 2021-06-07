@@ -1,0 +1,79 @@
+<div style="max-width:95%;min-height:300px;" >
+  <div style="width:100%;height:100%" class="shadow bg-white">
+    <div class="flex-row just-between pt-3 px-3">
+      <b style="font-size:16pt;"><i class="far fa-address-card"></i> {{text[lang].title}}</b>
+      <button class="btn bg-orange" (click)="save(validator.form)">{{text[lang].save}} <i *ngIf="saveProcessing" class="fas fa-circle-notch fa-spin"></i></button>
+    </div>
+    <div class="flex-row flex-wrap px-3 pb-3 mt-1">
+
+      <div class="fieldWrapper">
+        <div class="field">
+          <span>{{text[lang].firstname}}</span>
+          <input  [class.border-red]="!validateEmpty(validator.getValue('firstname')) && validator.touched('firstname')"
+                  [placeholder]="text[lang].firstnameplaceholder" [value]="user.firstname"
+                  (keyup)="validator.modify('firstname',$event.target.value)" />
+
+          <span [style.display]="validateEmpty(validator.getValue('firstname')) || !validator.touched('firstname') ? 'none':'block'"
+                class="hint text-red">
+            {{text[lang].firstnameempty}}
+          </span>
+
+        </div>
+      </div>
+
+      <div class="fieldWrapper">
+        <div class="field">
+          <span>{{text[lang].surname}}</span>
+          <input [class.border-red]="!validateEmpty(validator.getValue('surname')) && validator.touched('surname')"
+                 [placeholder]="text[lang].surnameplaceholder"
+                 (keyup)="validator.modify('surname',$event.target.value)"
+                 [value]="user.surname" />
+
+          <span [style.display]="validateEmpty(validator.getValue('surname')) || !validator.touched('surname') ? 'none':'block'"
+                class="hint text-red">
+            {{text[lang].surnameempty}}
+          </span>
+
+        </div>
+      </div>
+
+      <div class="fieldWrapper">
+        <div class="field">
+          <span>{{text[lang].email}}</span>
+          <input [class.border-red]="(!validateEmail(validator.getValue('email')) && validator.touched('email'))"
+                 [placeholder]="text[lang].emailplaceholder"
+                 (keyup)="validator.modify('email',$event.target.value)"
+                 [value]="user.email" disabled/>
+          <span [style.display]="validateEmail(validator.getValue('email')) || !validator.touched('email') ? 'none':'block'"
+                class="hint text-red">
+            {{text[lang].emailinvalid}}
+          </span>
+        </div>
+      </div>
+
+      <div class="fieldWrapper">
+        <div class="field">
+          <span>{{text[lang].mobile}}</span>
+          <input [class.border-red]="!validateMobile(validator.getValue('mobile')) && validator.touched('mobile')"
+                 [placeholder]="text[lang].mobileplaceholder" (keyup)="validator.modify('mobile',$event.target.value)" [value]="user.mobile" />
+          <span [style.display]="validateMobile(validator.getValue('mobile')) || !validator.touched('mobile') ? 'none':'block'"
+                class="hint text-red">
+            {{text[lang].mobileinvalid}}
+          </span>
+        </div>
+        
+      </div>
+
+      <div class="fieldWrapper">
+        <div class="field">
+          <span>{{text[lang].wechat}}</span>
+          <input [placeholder]="text[lang].wechatplaceholder" [value]="user.wechat"/>
+        </div>
+      </div>
+
+
+    </div>
+    
+  </div>
+  
+</div>

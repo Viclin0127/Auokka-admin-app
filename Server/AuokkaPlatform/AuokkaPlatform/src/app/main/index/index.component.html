@@ -1,0 +1,37 @@
+
+<div class="section flex-column top-navigator-wrapper">
+  <div class="container mx-auto">
+    <div class="flex-row top-navigator just-between px-2">
+      <div style="padding-top:7px;padding-bottom:7px;"><img src="../../../assets/logo/AuokkaLogo.png" style="max-height:45px" /></div>
+      <!--<div routerLink="/main/contribution" routerLinkActive="nav-tab-active">
+    <span><i class="fas fa-pen-fancy"></i> Contribution</span></div>
+  <div routerLink="/main/profile" routerLinkActive="nav-tab-active">
+    <span><i class="far fa-address-card"></i> Profile</span></div>-->
+      <div class="" style="right:30px;top:20px">
+        <span [class.language-tab-selected]="lang=='cn'" (click)="setLanguage('cn')" class="language-tab pointer">中文</span>&nbsp;|&nbsp;<span [class.language-tab-selected]="lang=='en'" (click)="setLanguage('en')" class="pointer language-tab">English</span>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div class="section bg-gray py-3" style="width:100vw;min-height:90vh;">
+  <div class="container mx-auto flex-row">
+    <div class="side-navigator" style="max-width: 220px;">
+      <span routerLink="contribution" routerLinkActive="side-nav-tab-active"><i class="fas fa-pen-fancy"></i> {{text[lang].contribution}}</span>
+      <div class="ml-1 side-navigator" >
+        <div routerLink="contribution/new" routerLinkActive="side-nav-tab-active"><i class="far fa-edit"></i> {{text[lang].newcontribution}}</div>
+        <div routerLink="contribution/accepted" routerLinkActive="side-nav-tab-active"><i class="fas fa-check-double"></i> {{text[lang].acceptedcontribution}}</div>
+        <div routerLink="contribution/review" routerLinkActive="side-nav-tab-active"><i class="fas fa-eye"></i> {{text[lang].underreview}}</div>
+      </div>
+      <span routerLink="profile" routerLinkActive="side-nav-tab-active"><i class="far fa-address-card"></i> {{text[lang].profile}}</span>
+
+    </div>
+    <div style="flex-grow:100;min-height:400px;">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</div>
+
+

@@ -1,0 +1,94 @@
+<div class="px-5 text-grey">
+  <div class="field">
+    <div class="field-title">
+      First Name <span class="text-red">*</span>
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="model.firstname" [class.border-red]="!validation['firstname']()" />
+      <small>{{valid(model.firstname, 'firstname', 'required')}}</small>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="field-title">
+      Surname <span class="text-red">*</span>
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="model.surname" [class.border-red]="!validation['surname']()" />
+      <small>{{valid(model.surname, 'surname', 'required')}}</small>
+    </div>
+  </div>
+
+  <div *ngIf="model.id == null" class="field">
+    <div class="field-title">
+      Username <span class="text-red">*</span>
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="model.username" (change)="checkUsernameRepeat(model.username)" [class.border-red]="!validation['username']()" />
+      <small>{{valid(model.username, 'username', 'required')}}</small>
+      <small>{{(usernameRepeat ? 'This username exists, please use another one' : '')}}</small>
+    </div>
+  </div>
+
+  <div *ngIf="model.id == null" class="field">
+    <div class="field-title">
+      Password <span class="text-red">*</span>
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="model.password" [class.border-red]="!validation['password']()" />
+      <small>{{valid(model.password, 'password', 'required')}}</small>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="field-title">
+      Email <span class="text-red">*</span>
+    </div>
+    <input type="text" [(ngModel)]="model.email" [class.border-red]="!validation['email']()" />
+    <small>{{valid(model.email, 'email', 'required')}}</small>
+    <small>{{valid(model.email, 'email', 'email')}}</small>
+  </div>
+
+  <div class="field">
+    <div class="field-title">
+      Title
+    </div>
+    <div>
+      <input type="text" [(ngModel)]="model.title" />
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="field-title">
+      Description
+    </div>
+    <input type="text" [(ngModel)]="model.description" />
+  </div>
+
+
+
+  <div class="field">
+    <div class="field-title">
+      Mobile
+    </div>
+    <input type="text" [(ngModel)]="model.mobile" />
+  </div>
+
+  <div class="field">
+    <div class="field-title">
+      Active <input type="checkbox" [checked]="model.active == 1" (change)="model.active = ( model.active ? 0:1)" />
+    </div>
+  </div>
+
+  <div class="field flex-row just-end">
+    <div class="mr-2">
+      <button class="btn bg-red rounded" (click)="cancel.emit()">Cancel</button>
+    </div>
+    <div>
+      <button *ngIf="processStatus == 0 || processStatus == 2 || processStatus == -1" class="btn rounded" (click)="submit()">Submit</button>
+      <button *ngIf="processStatus == 1" class="btn rounded"><i class="fas fa-circle-notch fa-spin"></i></button>
+      <span *ngIf="processStatus == 2" class="text-green mx-1"><i class="far fa-check-circle"></i> Updated</span>
+      <span *ngIf="processStatus == -1" class="text-red-alt mx-1"><i class="far fa-times-circle"></i> Update failed</span>
+    </div>
+  </div>
+</div>

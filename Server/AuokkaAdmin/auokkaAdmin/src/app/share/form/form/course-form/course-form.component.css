@@ -1,0 +1,46 @@
+input[type="text"] {
+  width: 300px;
+}
+
+select {
+  width: 332px;
+}
+
+.courseIntro {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.courseIntroSection .courseIntroWrapper:nth-child(2n-1) {
+  background-color: #f7f7f7;
+}
+
+.courseIntro .courseIntroField {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.courseIntro .courseIntroField div {
+  margin-bottom: 10px;
+}
+.courseIntro .courseIntroFieldTitle
+{
+  font-weight:700;
+}
+
+.field {
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+}
+
+small {
+  margin-top:5px;
+}
+
+@media screen and (min-width: 768px) {
+  .field {
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

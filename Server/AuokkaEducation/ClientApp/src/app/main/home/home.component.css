@@ -1,0 +1,175 @@
+
+
+.sub-section-title {
+  font-size: 25pt;
+}
+
+
+
+.main-banner-img-wrapper {
+  display: block;
+  overflow: hidden;
+  height: 250px;
+  width: 100%;
+}
+
+.whyauokka div{
+  display: flex;
+  flex-direction:column;
+  min-width: 50%;
+  margin-top:20px;
+}
+
+.whyauokka div label {
+  margin-top: 15px;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.whyauokka div span {
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.whyauokka div img{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.testimony {
+  font-size: 15pt;
+}
+
+.introduction{
+  display: flex;
+  flex-direction:column;
+}
+
+.introduction div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro-img{
+  max-width:320px;
+  max-height:256px;
+}
+
+.main-banner-title{
+  position: absolute;
+  margin-top:50px;
+  left:50px;
+  font-size: 16pt;
+  text-shadow: 0px 0px 5px #626262;
+}
+
+.main-banner-content{
+  max-width:80%;
+  font-size:10pt;
+  margin-top:10px;
+}
+
+@media screen and (min-width: 576px) {
+  .testimony {
+    font-size: 15pt;
+  }
+
+  .main-banner-img-wrapper {
+    height: 300px;
+  }
+
+  .intro-img {
+    max-width: 400px;
+    max-height: 320px;
+  }
+
+  .main-banner-title {
+    margin-top: 50px;
+    left: 70px;
+    font-size: 20pt;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .testimony {
+    font-size: 20pt;
+  }
+  .main-banner-img-wrapper {
+    height: 400px;
+  }
+
+  .intro-img {
+    max-width: 500px;
+    max-height: 400px;
+  }
+
+  .main-banner-title {
+    margin-top: 65px;
+    left: 165px;
+    font-size: 23pt;
+  }
+
+  .main-banner-content {
+    font-size: 12pt;
+    max-width: 40%;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .testimony {
+    font-size: 20pt;
+  }
+  .introduction div {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .top-banner {
+    max-height:500px;
+  }
+  .main-banner-img-wrapper {
+    height: 500px;
+  }
+
+  .main-banner-title {
+    margin-top: 80px;
+    left: 180px;
+    font-size: 26pt;
+  }
+
+  .main-banner-content {
+    font-size: 14pt;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 1199px) {
+  .testimony {
+    font-size: 25pt;
+  }
+  .whyauokka div {
+    min-width: 0%;
+  }
+
+  .whyauokka div label {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .whyauokka div span {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .main-banner-title {
+    margin-top: 100px;
+    left: 200px;
+    font-size: 30pt;
+  }
+}
+
+
+
+
+

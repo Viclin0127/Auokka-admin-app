@@ -1,0 +1,8 @@
+<div class="flex-row just-center">
+  <div *ngIf="inOrder" class="tab" style="color:#777777">Steps: </div>
+  <div class="tab"
+       *ngFor="let t of tabs;index as i"
+       (click)="emit(tabs[i].code, i);"
+       [class.tab-select]="current == i"
+       [class.pointer]="switchable">{{t.label}}</div>
+</div>

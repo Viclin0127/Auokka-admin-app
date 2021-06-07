@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th *ngFor="let c of column" (click)="sort(c)">{{c.label}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of models;index as i">
+      <td>{{i + 1}}</td>
+      <td *ngFor="let c of column">
+        <img *ngIf="c.type=='image'" [src]="getData(m, c)"/>
+        <input type="checkbox" *ngIf="c.type=='checkbox'" />
+        <span *ngIf="c.type!='image' && c.type!=checkbox">{{getData(m, c)}}</span>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
