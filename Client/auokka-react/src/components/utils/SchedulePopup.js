@@ -1,4 +1,5 @@
 import React,{useRef, useState, useEffect} from "react";
+import axios from "axios";
 import DatePicker from 'react-date-picker';
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
@@ -17,6 +18,22 @@ export const SchedulePopup = ({courseData, showSchedule, setShowSchedule, isNewS
                 setIsNewSchedule(false)
             }
         }
+    }
+
+    // handle onClick
+    // TODO: CORS issues
+    const handleOnClick = () =>{
+        const URL = ("https://localhost:5001/api/schedules/").concat(courseData.schedule[0].id.toString())
+        const newSchedule = {id: courseData.schedule[0].id, courseId: courseData.id, from:"", to:"", location: "", active: 0}
+
+        const updateSchedule = async ()=>{
+            // const res = await axios.put(URL, newSchedule)
+            const res = await axios.get(URL)
+            console.log(res.data)
+            const res2 = await axios.put(URL, res.data)
+            console.log(res2)
+        }
+        updateSchedule();
     }
 
     // render page with courseData
@@ -80,7 +97,7 @@ export const SchedulePopup = ({courseData, showSchedule, setShowSchedule, isNewS
                             {(courseData.schedule[0].active===1)?<input type="checkbox" defaultChecked></input>:<input type="checkbox"></input>}
                         </div>
                         <div className="popup-body__submit">
-                            <button className="btn_blue">Submit</button>
+                            <button className="btn_blue" onClick={handleOnClick}>Submit</button>
                         </div>
                     </div>
                 </div>

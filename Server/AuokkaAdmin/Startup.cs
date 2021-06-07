@@ -17,7 +17,7 @@ namespace AuokkaAdmin
             Configuration = configuration;
         }
         // add CORS
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        // readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public IConfiguration Configuration { get; }
 
@@ -42,11 +42,10 @@ namespace AuokkaAdmin
             // add CORS
             services.AddCors(options =>
             {
-                options.AddPolicy(MyAllowSpecificOrigins,
-                                builder =>
-                                {
-                                    builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
-                                });
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+                });
             });
 
             services.AddDbContext<AuokkaContext>(
@@ -65,11 +64,10 @@ namespace AuokkaAdmin
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+            //add CORS
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
-
-            //add CORS
-            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

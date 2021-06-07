@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AuokkaAdmin.Models;
 
+
 namespace AuokkaAdmin.Controllers
 {
     [Route("api/[controller]")]
@@ -82,16 +83,17 @@ namespace AuokkaAdmin.Controllers
                     throw;
                 }
             }
-            var output = new
-            {
-                schedule.DefaultPrice,
-                schedule.Id,
-                schedule.Location,
-                schedule.Active,
-                schedule.From,
-                schedule.To
-            };
-            return Ok(output);
+            // var output = new
+            // {
+            //     schedule.DefaultPrice,
+            //     schedule.Id,
+            //     schedule.Location,
+            //     schedule.Active,
+            //     schedule.From,
+            //     schedule.To
+            // };
+            // return Ok(output);
+            return NoContent();
         }
 
         // POST: api/Schedules

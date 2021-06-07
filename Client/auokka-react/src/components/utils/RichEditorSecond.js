@@ -1,5 +1,5 @@
 import React from "react";
-import {Editor, EditorState, RichUtils, getDefaultKeyBinding, convertToRaw, convertFromRaw} from "draft-js";
+import {Editor, EditorState, RichUtils, getDefaultKeyBinding, convertToRaw, convertFromRaw, ContentState} from "draft-js";
 import "./RichEditor.css";
 import "draft-js/dist/Draft.css"
 
@@ -25,6 +25,16 @@ class RichEditorSecond extends React.Component {
       this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
       this.toggleBlockType = this._toggleBlockType.bind(this);
       this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
+    }
+
+    componentDidMount(){
+      // return editorState content(JSON string) back to Edit.js
+      const contentState = this.state.editorState.getCurrentContent();
+        
+      const rawJson = convertToRaw(contentState);
+      const jsonStr = JSON.stringify(rawJson, null, 1);
+      
+      this.props.extractDataSecond(jsonStr);
     }
 
     componentDidUpdate(){

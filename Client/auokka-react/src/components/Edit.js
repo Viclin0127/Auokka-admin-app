@@ -193,7 +193,7 @@ const Edit = (props) =>{
                             <button className="btn_red">Cancel</button>
                         </div>
                         <div className="operate-button__submit">
-                            <button className="btn_blue" onClick={clickSubmit}>Submit</button>
+                            <button className="btn_blue" onClick={handleOnClick}>Submit</button>
                         </div>
                     </div>
                     <SchedulePopup courseData={courseData} showSchedule={showSchedule} setShowSchedule={setShowSchedule} isNewSchedule={isNewSchedule} setIsNewSchedule={setIsNewSchedule}/>
@@ -202,8 +202,8 @@ const Edit = (props) =>{
         )
     }
 
-    // submit edit data
-    const clickSubmit = ()=>{
+    // handle onClick -> submit edit data
+    const handleOnClick = ()=>{
         // for (var i = 0; i < document.getElementsByTagName("td").length; i++) {
         //     if (document.getElementsByTagName("td").item(i).innerHTML.includes("checked")){
         //         console.log(document.getElementsByTagName("td").item(i).innerHTML)
@@ -223,8 +223,8 @@ const Edit = (props) =>{
         // console.log(deepCopyCourseData)
 
         const updateCourseData = async () =>{
-            // const res = await axios.put(URL, deepCopyCourseData);
-            // console.log("UPDATED!")
+            const res = await axios.put(URL, deepCopyCourseData);
+            console.log("UPDATED!")
             console.log("Need to uncomment the submit function")
             // DEBUG
             // console.log(deepCopyCourseData)
